@@ -44,7 +44,19 @@ const I18N = {
     theme_label: 'Theme:', th_auto: 'Auto', th_light: 'Light', th_dark: 'Dark',
     sync_label: 'Sync:', sync_setup: '☁ Set up sync', sync_login: 'Sign in with Google', sync_logout: 'Sign out',
     sync_remove: 'Remove config', sync_save: 'Save & reload', sync_ok: 'Synced', sync_err: 'Sync error',
-    sync_bad: 'Could not read the config', sync_ph: 'Paste your firebaseConfig here (the { ... } part)',
+    sync_bad: 'Could not read the config',
+    sync_noload: 'Could not load Firebase (check your connection, then reload).', sync_logging: 'Signing in…',
+    auth_err: {
+      'auth/unauthorized-domain': d => `This address (${d}) is not allowed in Firebase. Firebase console → Authentication → Settings → Authorized domains → add "${d}".`,
+      'auth/operation-not-allowed': () => 'Google sign-in is turned off. Firebase console → Authentication → Sign-in method → enable Google.',
+      'auth/popup-closed-by-user': () => 'The sign-in window was closed before finishing.',
+      'auth/network-request-failed': () => 'Network error. Check your connection and try again.',
+      'auth/invalid-api-key': () => 'The apiKey in the config is wrong. Remove the config and paste it again.',
+      'auth/api-key-not-valid': () => 'The apiKey in the config is wrong. Remove the config and paste it again.',
+      'auth/internal-error': () => 'Firebase returned an internal error. Check that the config matches your project.',
+      redirect: () => 'The browser blocked the sign-in result. Try again in Chrome or Safari directly (not the home-screen app), or turn off "Prevent cross-site tracking" in Safari.',
+      other: c => `Sign-in failed (${c}).`
+    }, sync_ph: 'Paste your firebaseConfig here (the { ... } part)',
     pomo_min: 'min',
     deleted: s => `Deleted "${s}"`,
     no_entry: d => `No entry for ${d}. Write one above!`,
@@ -118,7 +130,19 @@ const I18N = {
     theme_label: 'テーマ:', th_auto: '自動', th_light: 'ライト', th_dark: 'ダーク',
     sync_label: '同期:', sync_setup: '☁ 同期を設定', sync_login: 'Googleでログイン', sync_logout: 'ログアウト',
     sync_remove: '設定を削除', sync_save: '保存して再読み込み', sync_ok: '同期済み', sync_err: '同期エラー',
-    sync_bad: '設定を読み取れませんでした', sync_ph: 'firebaseConfig({ ... }の部分)をここに貼り付け',
+    sync_bad: '設定を読み取れませんでした',
+    sync_noload: 'Firebase を読み込めませんでした(通信を確認して再読み込みしてください)', sync_logging: 'ログイン中…',
+    auth_err: {
+      'auth/unauthorized-domain': d => `このアドレス(${d})が Firebase で許可されていません。Firebase コンソール →「Authentication」→「設定」→「承認済みドメイン」に「${d}」を追加してください。`,
+      'auth/operation-not-allowed': () => 'Google ログインがオフになっています。Firebase コンソール →「Authentication」→「Sign-in method」で Google を有効にしてください。',
+      'auth/popup-closed-by-user': () => 'ログイン画面が途中で閉じられました。',
+      'auth/network-request-failed': () => '通信エラーです。電波を確認してもう一度試してください。',
+      'auth/invalid-api-key': () => '設定の apiKey が正しくありません。「設定を削除」してから貼り直してください。',
+      'auth/api-key-not-valid': () => '設定の apiKey が正しくありません。「設定を削除」してから貼り直してください。',
+      'auth/internal-error': () => 'Firebase 側でエラーが起きました。貼った設定がプロジェクトのものと合っているか確認してください。',
+      redirect: () => 'ブラウザがログイン結果を受け取れませんでした。ホーム画面のアプリではなく Safari / Chrome で直接開いて試すか、Safari の「サイト越えトラッキングを防ぐ」をオフにして試してください。',
+      other: c => `ログインできませんでした(${c})`
+    }, sync_ph: 'firebaseConfig({ ... }の部分)をここに貼り付け',
     pomo_min: '分',
     deleted: s => `「${s}」を削除しました`,
     no_entry: d => `${d}の記録はありません。上のフォームから書けます`,
@@ -1006,7 +1030,10 @@ function setSyncStatus(s) {
 function renderSyncUI() {
   const el = document.getElementById('sync-area');
   if (!el) return;
-  if (typeof firebase === 'undefined') { el.innerHTML = ''; return; }
+  if (typeof firebase === 'undefined') {
+    el.innerHTML = fbConfig ? `<span class="settings-label">${t('sync_label')}</span><span class="sync-err">${t('sync_noload')}</span>` : '';
+    return;
+  }
   let html = `<span class="settings-label">${t('sync_label')}</span>`;
   if (!fbConfig) {
     html += `<button class="chip-btn ${syncSetupOpen ? 'on' : ''}" onclick="toggleSyncSetup()">${t('sync_setup')}</button>`;
@@ -1019,8 +1046,9 @@ function renderSyncUI() {
       </div>`;
     }
   } else if (!fbUser) {
-    html += `<button class="chip-btn on" onclick="fbLogin()">${t('sync_login')}</button>
+    html += `<button class="chip-btn on" onclick="fbLogin()" ${authBusy ? 'disabled' : ''}>${authBusy ? t('sync_logging') : t('sync_login')}</button>
       <button class="chip-btn" onclick="removeFbConfig()">${t('sync_remove')}</button>`;
+    if (authError) html += `<div class="sync-err">${esc(authError)}</div>`;
   } else {
     html += `<span class="sync-mail">${esc(fbUser.email || '')}</span>
       <span class="settings-label" id="sync-status">${statusText()}</span>
@@ -1034,7 +1062,10 @@ function toggleSyncSetup() {
   if (syncSetupOpen) document.getElementById('fb-config-input').focus();
 }
 function saveFbConfig() {
-  const txt = document.getElementById('fb-config-input').value;
+  // Phones may turn " into curly quotes or type full-width punctuation; undo that first.
+  const txt = document.getElementById('fb-config-input').value
+    .replace(/[\u201C\u201D\u201E\u2033\uFF02]/g, '"').replace(/[\u2018\u2019\u2032\uFF07]/g, "'")
+    .replace(/\uFF5B/g, '{').replace(/\uFF5D/g, '}').replace(/\uFF1A/g, ':').replace(/\uFF0C/g, ',');
   const m = txt.match(/\{[\s\S]*\}/);
   let cfg = null;
   if (m) {
@@ -1055,11 +1086,28 @@ function removeFbConfig() {
   localStorage.removeItem('planner_fbconfig');
   location.reload();
 }
+let authError = '', authBusy = false;
+function showAuthError(e) {
+  const code = (e && e.code) || String(e);
+  console.error('auth', e);
+  const msgs = t('auth_err');
+  authError = (msgs[code] || msgs.other)(code === 'auth/unauthorized-domain' ? location.hostname : code);
+  authBusy = false;
+  renderSyncUI();
+}
 function initFirebase() {
-  if (!fbConfig || typeof firebase === 'undefined') return;
+  if (!fbConfig) return;
+  if (typeof firebase === 'undefined') { renderSyncUI(); return; }
   try {
     if (!firebase.apps.length) firebase.initializeApp(fbConfig);
+    // Coming back from a redirect sign-in: report why it failed, if it did.
+    const triedRedirect = localStorage.getItem('planner_auth_redirect');
+    localStorage.removeItem('planner_auth_redirect');
+    firebase.auth().getRedirectResult().then(r => {
+      if (triedRedirect && !(r && r.user) && !firebase.auth().currentUser) showAuthError({ code: 'redirect' });
+    }).catch(showAuthError);
     firebase.auth().onAuthStateChanged(u => {
+      if (u) { authError = ''; authBusy = false; }
       fbUser = u;
       renderSyncUI();
       if (u) startSync();
@@ -1067,10 +1115,20 @@ function initFirebase() {
     });
   } catch (e) { console.error(e); }
 }
+// Popup first; fall back to a full-page redirect only when popups can't be used here.
 function fbLogin() {
   if (typeof firebase === 'undefined' || !fbConfig) return;
   const provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup(provider).catch(() => firebase.auth().signInWithRedirect(provider));
+  provider.setCustomParameters({ prompt: 'select_account' });
+  authError = '';
+  authBusy = true;
+  renderSyncUI();
+  firebase.auth().signInWithPopup(provider).then(() => { authBusy = false; renderSyncUI(); }).catch(e => {
+    if (e && ['auth/popup-blocked', 'auth/operation-not-supported-in-environment', 'auth/web-storage-unsupported'].includes(e.code)) {
+      localStorage.setItem('planner_auth_redirect', '1');
+      firebase.auth().signInWithRedirect(provider).catch(showAuthError);
+    } else showAuthError(e);
+  });
 }
 function fbLogout() {
   firebase.auth().signOut();

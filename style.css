@@ -692,3 +692,6 @@ html.dark .link-btn.danger { color: #e8a394; }
 .ts-more-bits { font-weight: 500; margin-left: 8px; color: var(--text); }
 
 [hidden] { display: none !important; }
+
+.sync-err { width: 100%; font-size: 13px; color: #b3543f; line-height: 1.6; margin-top: 4px; }
+html.dark .sync-err { color: #e8a394; }
