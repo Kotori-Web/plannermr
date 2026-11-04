@@ -5,7 +5,7 @@ const I18N = {
     stat_today: 'Tasks due today', stat_open: 'Open tasks',
     week_events: 'This Week', show_later: 'Show later events', hide_later: 'Hide later events',
     upcoming: 'Upcoming Tasks', recent_done: 'Recently Completed',
-    important: '⭐ High Priority', empty_important: 'No high-priority tasks',
+    important: 'High Priority', empty_important: 'No high-priority tasks',
     add_task: 'Add a Task', task_name_ph: 'Task name', tag_ph: 'Tag', add: 'Add',
     priority_high: 'Priority: High', priority_mid: 'Priority: Medium', priority_low: 'Priority: Low',
     pri_high: 'High', pri_mid: 'Med', pri_low: 'Low',
@@ -13,36 +13,36 @@ const I18N = {
     search_ph: 'Search tasks...', all_tags: 'All tags',
     add_goal: 'Add a Main Goal', goal_ph: 'Main goal (e.g. TOEIC 800)', goals: 'Goals',
     goal_hint: 'Click "+ Mid goal" on a main goal to add a mid goal, and "+ Sub goal" on a mid goal to add a sub goal. Each goal has its own progress — they are not linked.',
-    notify_at_hint: 'The time field next to 🔔 sets a custom notification time (optional). If empty, notifications follow the default timing set on Home. Tap a task row to edit it, and use the ＋ button to add subtasks.',
+    notify_at_hint: 'The time field next to Notify sets a custom notification time (optional). If empty, notifications follow the default timing set on Home. Tap a task row to edit it, and use the ＋ button to add subtasks.',
     confirm_del: n => `Delete "${n}"?`,
     sub_ph: 'Subtask',
     add_habit: 'Add a Habit', habit_ph: 'Habit (e.g. English vocab, 10 min)', habits: 'My Habits',
-    habit_hint: 'Tap a habit row to check off today. Tap a circle to toggle any day; use ← → to see past weeks. Set a ⏰ time for a daily reminder (only fires if not yet checked, while the page is open).',
+    habit_hint: 'Tap a habit row to check off today. Tap a circle to toggle any day; use ← → to see past weeks. Set a reminder time (only fires if not yet checked, while the page is open).',
     empty_habits: 'No habits yet', streak: 'streak',
     remind_title: 'Daily reminder (optional)', habit_notif_body: 'Time for your habit!',
     write_entry: 'Write an Entry', entry_ph: 'What happened today, how you felt...', save: 'Save',
     empty_events_week: 'No events this week', empty_events_later: 'No later events',
-    empty_open: 'No open tasks 🎉', empty_done: 'Nothing completed yet', empty_due: 'No tasks with due dates',
+    empty_open: 'No open tasks', empty_done: 'Nothing completed yet', empty_due: 'No tasks with due dates',
     empty_goals: 'No goals yet', no_events_day: 'No events',
     undo: 'Undo', edit: 'Edit', done_suffix: '(done)', cancel: 'Cancel',
     lv: ['MAIN', 'MID', 'SUB'], add_lv: ['+ Mid goal', '+ Sub goal'], goal_name_ph: 'Goal name',
     event_ph: 'New event', add_event: 'Add Event', close: 'Close', settings: 'Settings',
-    repeat_weekly: 'Repeat weekly', notify_this: '🔔 Notify',
-    export: '⬇ Backup', import: '⬆ Restore', import_done: 'Data restored!', import_err: 'Could not read that file',
-    ics_export: '📅 Export .ics', ics_import: '📅 Import .ics',
+    repeat_weekly: 'Repeat weekly', notify_this: 'Notify',
+    export: 'Backup', import: 'Restore', import_done: 'Data restored!', import_err: 'Could not read that file',
+    ics_export: 'Export .ics', ics_import: 'Import .ics',
     ics_done: n => `Imported ${n} event(s)`, ics_err: 'Could not read that file',
-    open_stats: '📊 Stats', back_home: '← Home',
-    stats_rate: 'Completion — last 7 days', stats_pomo_total: '🍅 This week',
+    open_stats: 'Stats', back_home: 'Home',
+    stats_rate: 'Completion — last 7 days', stats_pomo_total: 'Pomodoros this week',
     stats_done: 'Tasks Completed — Last 7 Days', stats_pomo: 'Pomodoros — Last 7 Days',
     stats_pri: 'Open Tasks by Priority', stats_mood: 'Mood — Last 7 Days', stats_habits: 'Habits',
     range_week: 'Week', range_month: 'Month',
     start: 'Start', pause: 'Pause', reset: 'Reset', focus: 'Focus', brk: 'Break',
-    pomo_count: n => `🍅 ${n} today`,
-    notif_off: '🔔 Reminders: off', notif_on: '🔔 Reminders: on', notif_blocked: '🔕 Notifications blocked',
+    pomo_count: n => `${n} today`,
+    notif_off: 'Reminders: off', notif_on: 'Reminders: on', notif_blocked: 'Notifications blocked',
     notify_when: 'Notify:', off_0: 'At time', off_5: '5 min before', off_15: '15 min before', off_30: '30 min before', off_60: '1 hr before', off_1440: '1 day before',
     sound_label: 'Sound:', snd_beep: 'Beep', snd_chime: 'Chime', snd_bell: 'Bell', snd_none: 'None',
     theme_label: 'Theme:', th_auto: 'Auto', th_light: 'Light', th_dark: 'Dark',
-    sync_label: 'Sync:', sync_setup: '☁ Set up sync', sync_login: 'Sign in with Google', sync_logout: 'Sign out',
+    sync_label: 'Sync:', sync_setup: 'Set up sync', sync_login: 'Sign in with Google', sync_logout: 'Sign out',
     sync_remove: 'Remove config', sync_save: 'Save & reload', sync_ok: 'Synced', sync_err: 'Sync error',
     sync_bad: 'Could not read the config',
     sync_noload: 'Could not load Firebase (check your connection, then reload).', sync_logging: 'Signing in…',
@@ -71,27 +71,27 @@ const I18N = {
     del_one: 'This day only', del_after: 'This & later',
     repeat_none: 'No repeat', repeat_daily: 'Daily', repeat_weekly_opt: 'Weekly', repeat_monthly: 'Monthly', repeat_until: 'Until',
     del_label: 'Delete', prev: 'Previous', next: 'Next',
-    nav_tasks_short: 'Tasks', pick_date: '📅 Date', add_sub: '+ Subtask', del_task: 'Delete task', details: 'Details', mark_done: '○ Mark done', mark_undone: '✓ Done — tap to undo', today_habits: "Today's Habits", data_title: 'Data & Sync',
+    nav_tasks_short: 'Tasks', pick_date: 'Date', add_sub: 'Subtask', del_task: 'Delete task', details: 'Details', mark_done: 'Mark done', mark_undone: 'Done — tap to undo', today_habits: "Today's Habits", data_title: 'Data & Sync',
     more_opts: 'More options (tag, time, priority, reminder)',
     due_today: 'Today', due_tomorrow: 'Tomorrow', due_week: 'This week', due_next: 'Next week', due_none: 'No date',
     b_overdue: 'Overdue', b_today: 'Today', b_soon: 'Within 3 days', b_week: 'Within 7 days', b_later: 'Later', b_none: 'No due date',
     rel: n => n < 0 ? `${-n}d overdue` : n === 0 ? 'Today' : n === 1 ? 'Tomorrow' : `in ${n} days`,
-    more_tasks: (a, b) => `${a ? 'Later: ' + a : ''}${a && b ? ' · ' : ''}${b ? 'No date: ' + b : ''} →`,
-    all_tasks: 'All tasks →',
+    more_tasks: (a, b) => `${a ? 'Later: ' + a : ''}${a && b ? ' · ' : ''}${b ? 'No date: ' + b : ''}`,
+    all_tasks: 'All tasks',
     hero_overdue: 'Past due', hero_today: 'Due today', hero_event: 'Coming up', hero_next: 'Next deadline',
-    hero_none: 'Nothing due today 🎉', hero_none_sub: 'Add tasks from the Tasks tab.',
+    hero_none: 'Nothing due today', hero_none_sub: 'Add tasks from the Tasks tab.',
     hero_done: 'Mark done', hero_open: 'Open', hero_edit: 'Edit event', hero_now: 'Happening now', hero_in: m => m >= 60 ? `in ${Math.floor(m/60)}h ${m%60}m` : `in ${m} min`, hero_then: 'Next task', hero_more: n => `+${n} more due today`,
     completed: s => `Completed "${s}"`,
     sum: (o, e) => `${o} open task${o === 1 ? '' : 's'} · ${e} event${e === 1 ? '' : 's'} today`,
     dateHead: s => I18N.en.fmtDateFull(s),
-    diary_for: d => `Diary — ${d}`, diary_saved: 'Saved ✓'
+    diary_for: d => `Diary — ${d}`, diary_saved: 'Saved'
   },
   ja: {
     nav_home: 'ホーム', nav_tasks: 'タスク', nav_cal: 'カレンダー', nav_habits: '習慣', nav_diary: '日記',
     stat_today: '今日締切のタスク', stat_open: '未完了タスク',
     week_events: '1週間の予定', show_later: 'それ以降の予定を表示', hide_later: 'それ以降の予定を隠す',
     upcoming: '期限が近いタスク', recent_done: '最近完了したタスク',
-    important: '⭐ 重要なタスク', empty_important: '優先度「高」のタスクはありません',
+    important: '重要なタスク', empty_important: '優先度「高」のタスクはありません',
     add_task: 'タスクを追加', task_name_ph: 'タスク名', tag_ph: 'タグ', add: '追加',
     priority_high: '優先度: 高', priority_mid: '優先度: 中', priority_low: '優先度: 低',
     pri_high: '高', pri_mid: '中', pri_low: '低',
@@ -99,36 +99,36 @@ const I18N = {
     search_ph: 'タスクを検索…', all_tags: 'すべてのタグ',
     add_goal: '大目標を追加', goal_ph: '大目標(例: TOEIC 800点)', goals: '進捗一覧',
     goal_hint: '大目標の「＋中目標」で中目標、中目標の「＋小目標」で小目標を追加できます。達成率はそれぞれ独立していて連動しません。',
-    notify_at_hint: '🔔の隣の時刻欄で通知時刻を個別に指定できます(任意)。空欄ならホームで設定した通知タイミングに従います。タスクの行をタップすると編集、＋ボタンでサブタスクを追加できます。',
+    notify_at_hint: '通知の隣の時刻欄で通知時刻を個別に指定できます(任意)。空欄ならホームで設定した通知タイミングに従います。タスクの行をタップすると編集、＋ボタンでサブタスクを追加できます。',
     confirm_del: n => `「${n}」を削除しますか?`,
     sub_ph: 'サブタスク',
     add_habit: '習慣を追加', habit_ph: '習慣(例: 英単語10分)', habits: '習慣リスト',
-    habit_hint: '習慣の行をタップすると今日の分をチェックできます。丸をタップすると任意の日を切り替え、←→で過去の週も見られます。⏰時刻を設定すると、その時刻に未チェックの場合だけ通知が届きます(ページを開いている間のみ)。',
+    habit_hint: '習慣の行をタップすると今日の分をチェックできます。丸をタップすると任意の日を切り替え、←→で過去の週も見られます。ベルの時刻を設定すると、その時刻に未チェックの場合だけ通知が届きます(ページを開いている間のみ)。',
     empty_habits: '習慣はまだありません', streak: '日連続',
     remind_title: '毎日のリマインダー(任意)', habit_notif_body: '習慣の時間です!',
     write_entry: '記録を書く', entry_ph: '今日あったこと、思ったこと…', save: '保存',
     empty_events_week: '1週間以内の予定はありません', empty_events_later: 'それ以降の予定はありません',
-    empty_open: '未完了のタスクはありません 🎉', empty_done: '完了したタスクはまだありません', empty_due: '期限付きタスクはありません',
+    empty_open: '未完了のタスクはありません', empty_done: '完了したタスクはまだありません', empty_due: '期限付きタスクはありません',
     empty_goals: '目標はまだありません', no_events_day: '予定はありません',
     undo: '元に戻す', edit: '編集', done_suffix: '(完了)', cancel: 'キャンセル',
     lv: ['大', '中', '小'], add_lv: ['＋中目標', '＋小目標'], goal_name_ph: '目標名',
     event_ph: '予定を入力', add_event: '予定を追加', close: '閉じる', settings: '設定',
-    repeat_weekly: '毎週繰り返す', notify_this: '🔔 通知する',
-    export: '⬇ バックアップ', import: '⬆ 復元', import_done: 'データを復元しました!', import_err: 'ファイルを読み込めませんでした',
-    ics_export: '📅 ICS書き出し', ics_import: '📅 ICS取り込み',
+    repeat_weekly: '毎週繰り返す', notify_this: '通知する',
+    export: 'バックアップ', import: '復元', import_done: 'データを復元しました!', import_err: 'ファイルを読み込めませんでした',
+    ics_export: 'ICS書き出し', ics_import: 'ICS取り込み',
     ics_done: n => `${n}件の予定を取り込みました`, ics_err: 'ファイルを読み込めませんでした',
-    open_stats: '📊 統計を見る', back_home: '← ホーム',
-    stats_rate: '完了率(直近7日)', stats_pomo_total: '🍅 今週の合計',
+    open_stats: '統計を見る', back_home: 'ホーム',
+    stats_rate: '完了率(直近7日)', stats_pomo_total: '今週のポモドーロ',
     stats_done: '完了タスク数(直近7日)', stats_pomo: 'ポモドーロ(直近7日)',
     stats_pri: '未完了タスクの優先度内訳', stats_mood: '気分の推移(直近7日)', stats_habits: '習慣の達成',
     range_week: '週', range_month: '月',
     start: 'スタート', pause: '一時停止', reset: 'リセット', focus: '集中', brk: '休憩',
-    pomo_count: n => `🍅 今日 ${n} 回`,
-    notif_off: '🔔 通知: オフ', notif_on: '🔔 通知: オン', notif_blocked: '🔕 通知がブロックされています',
+    pomo_count: n => `今日 ${n} 回`,
+    notif_off: '通知: オフ', notif_on: '通知: オン', notif_blocked: '通知がブロックされています',
     notify_when: '通知タイミング:', off_0: '定刻', off_5: '5分前', off_15: '15分前', off_30: '30分前', off_60: '1時間前', off_1440: '前日',
     sound_label: '通知音:', snd_beep: 'ビープ', snd_chime: 'チャイム', snd_bell: 'ベル', snd_none: 'なし',
     theme_label: 'テーマ:', th_auto: '自動', th_light: 'ライト', th_dark: 'ダーク',
-    sync_label: '同期:', sync_setup: '☁ 同期を設定', sync_login: 'Googleでログイン', sync_logout: 'ログアウト',
+    sync_label: '同期:', sync_setup: '同期を設定', sync_login: 'Googleでログイン', sync_logout: 'ログアウト',
     sync_remove: '設定を削除', sync_save: '保存して再読み込み', sync_ok: '同期済み', sync_err: '同期エラー',
     sync_bad: '設定を読み取れませんでした',
     sync_noload: 'Firebase を読み込めませんでした(通信を確認して再読み込みしてください)', sync_logging: 'ログイン中…',
@@ -155,20 +155,20 @@ const I18N = {
     del_one: 'この日だけ削除', del_after: 'この日以降を削除',
     repeat_none: '繰り返さない', repeat_daily: '毎日', repeat_weekly_opt: '毎週', repeat_monthly: '毎月', repeat_until: '終了日',
     del_label: '削除', prev: '前へ', next: '次へ',
-    nav_tasks_short: 'タスク', pick_date: '📅 日付', add_sub: '＋ サブタスク', del_task: 'このタスクを削除', details: '詳細', mark_done: '○ 完了にする', mark_undone: '✓ 完了済み(タップで戻す)', today_habits: '今日の習慣', data_title: 'データ・同期',
+    nav_tasks_short: 'タスク', pick_date: '日付', add_sub: 'サブタスク', del_task: 'このタスクを削除', details: '詳細', mark_done: '完了にする', mark_undone: '完了済み(タップで戻す)', today_habits: '今日の習慣', data_title: 'データ・同期',
     more_opts: '詳細(タグ・時刻・優先度・通知)',
     due_today: '今日', due_tomorrow: '明日', due_week: '今週中', due_next: '来週', due_none: '期限なし',
     b_overdue: '期限超過', b_today: '今日', b_soon: '3日以内', b_week: '7日以内', b_later: 'それ以降', b_none: '期限なし',
     rel: n => n < 0 ? `${-n}日超過` : n === 0 ? '今日' : n === 1 ? '明日' : `あと${n}日`,
-    more_tasks: (a, b) => `${a ? 'それ以降 ' + a + '件' : ''}${a && b ? '・' : ''}${b ? '期限なし ' + b + '件' : ''} →`,
-    all_tasks: 'すべてのタスク →',
+    more_tasks: (a, b) => `${a ? 'それ以降 ' + a + '件' : ''}${a && b ? '・' : ''}${b ? '期限なし ' + b + '件' : ''}`,
+    all_tasks: 'すべてのタスク',
     hero_overdue: '期限が過ぎています', hero_today: '今日が締切', hero_event: 'もうすぐの予定', hero_next: '次の締切',
-    hero_none: '今日が締切のものはありません 🎉', hero_none_sub: 'タスクは「タスク」タブから追加できます。',
+    hero_none: '今日が締切のものはありません', hero_none_sub: 'タスクは「タスク」タブから追加できます。',
     hero_done: '完了にする', hero_open: '開く', hero_edit: '予定を編集', hero_now: '開催中', hero_in: m => m >= 60 ? `あと${Math.floor(m/60)}時間${m%60 ? m%60 + '分' : ''}` : `あと${m}分`, hero_then: '次のタスク', hero_more: n => `今日締切がほかに ${n} 件`,
     completed: s => `「${s}」を完了しました`,
     sum: (o, e) => `未完了 ${o} 件・今日の予定 ${e} 件`,
     dateHead: s => { const [y,m,d] = s.split('-').map(Number); return `${m}月${d}日(${I18N.ja.dows[new Date(y,m-1,d).getDay()]})`; },
-    diary_for: d => `${d}の日記`, diary_saved: '保存しました ✓'
+    diary_for: d => `${d}の日記`, diary_saved: '保存しました'
   }
 };
 let lang = localStorage.getItem('planner_lang') || ((navigator.language || '').startsWith('ja') ? 'ja' : 'en');
@@ -178,7 +178,7 @@ function applyI18n() {
   document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
   document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
   document.querySelectorAll('[data-i18n-aria]').forEach(el => { el.setAttribute('aria-label', t(el.dataset.i18nAria)); });
-  document.getElementById('btn-lang').textContent = lang === 'en' ? '🌐 日本語' : '🌐 English';
+  document.getElementById('btn-lang').innerHTML = ic('globe') + (lang === 'en' ? '日本語' : 'English');
   document.getElementById('btn-task-add').textContent = editingTaskId ? t('save') : t('add');
   document.getElementById('btn-task-cancel').textContent = t('cancel');
   document.getElementById('btn-event-add').textContent = editingEventId ? t('save') : t('add_event');
@@ -259,6 +259,8 @@ function fixProjects() {
 }
 fixProjects();
 
+// Line icon from the SVG sprite in index.html.
+const ic = (name, cls = '') => `<svg class="ic${cls ? ' ' + cls : ''}" aria-hidden="true"><use href="#i-${name}"/></svg>`;
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
 const dateToStr = d => d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
 const todayStr = () => dateToStr(new Date());
@@ -552,7 +554,7 @@ function dueChipsHTML(current, fn) {
   const choices = dueChoices();
   const custom = current && !choices.some(([, v]) => v === current);
   return choices.map(([k, v]) => `<button type="button" class="chip-btn ${current === v ? 'on' : ''}" onclick="${fn}('${v}')">${t(k)}</button>`).join('') +
-    `<label class="chip-btn date-chip ${custom ? 'on' : ''}">${custom ? '📅 ' + fmtDate(current) : t('pick_date')}<input type="date" value="${current || ''}" onchange="${fn}(this.value)" aria-label="${t('pick_date')}"></label>`;
+    `<label class="chip-btn date-chip ${custom ? 'on' : ''}">${ic('calendar')}${custom ? fmtDate(current) : t('pick_date')}<input type="date" value="${current || ''}" onchange="${fn}(this.value)" aria-label="${t('pick_date')}"></label>`;
 }
 function setTaskDue(v) { document.getElementById('task-due').value = v; renderDueChips(); }
 function renderDueChips() {
@@ -610,7 +612,7 @@ function subsBlockHTML(tk) {
   let html = (tk.subs || []).map(s => `<div class="sub-item ${s.done ? 'done' : ''}">
     <input type="checkbox" ${s.done ? 'checked' : ''} onchange="toggleSub('${tk.id}','${s.id}')">
     <span class="sub-title">${esc(s.title)}</span>
-    <button class="small" aria-label="${t('del_label')}" onclick="delSub('${tk.id}','${s.id}')">✕</button>
+    <button class="small" aria-label="${t('del_label')}" onclick="delSub('${tk.id}','${s.id}')">${ic('x')}</button>
   </div>`).join('');
   if (subFormTaskId === tk.id) html += `<div class="sub-form">
     <input type="text" id="sub-input-${tk.id}" placeholder="${t('sub_ph')}" onkeydown="if(event.key==='Enter')submitSub('${tk.id}')">
@@ -690,21 +692,21 @@ function renderSheet() {
   const tk = sheetTask();
   if (!tk) return;
   const btn = document.getElementById('ts-done');
-  btn.textContent = tk.done ? t('mark_undone') : t('mark_done');
+  btn.innerHTML = (tk.done ? ic('check') : ic('circle')) + (tk.done ? t('mark_undone') : t('mark_done'));
   btn.classList.toggle('on', !!tk.done);
   renderSheetDueChips();
   // Summary of what is set under "Details", so it can stay folded.
   const bits = [
     tk.tag ? '#' + esc(tk.tag) : '',
-    timeStr(tk) ? '🕐 ' + timeStr(tk) : '',
+    timeStr(tk) ? ic('clock') + timeStr(tk) : '',
     tk.pri === 'high' ? t('pri_high') : tk.pri === 'low' ? t('pri_low') : '',
-    tk.notify === false ? '🔕' : (tk.notifyAt ? '🔔' + tk.notifyAt : '')
+    tk.notify === false ? ic('bell-off') : (tk.notifyAt ? ic('bell') + tk.notifyAt : '')
   ].filter(Boolean);
   document.getElementById('ts-more-sum').innerHTML = t('details') + (bits.length ? `<span class="ts-more-bits">${bits.join(' · ')}</span>` : '');
-  document.getElementById('ts-subs').innerHTML = (tk.subs || []).map(sb => `<div class="sub-item ${sb.done ? 'done' : ''}" style="padding-left:4px;">
+  document.getElementById('ts-subs').innerHTML = (tk.subs || []).map(sb => `<div class="sub-item ${sb.done ? 'done' : ''}">
     <input type="checkbox" ${sb.done ? 'checked' : ''} onchange="sheetToggleSub('${sb.id}')" aria-label="${esc(sb.title)}">
     <span class="sub-title">${esc(sb.title)}</span>
-    <button class="small" aria-label="${t('del_label')}" onclick="sheetDelSub('${sb.id}')">✕</button>
+    <button class="small" aria-label="${t('del_label')}" onclick="sheetDelSub('${sb.id}')">${ic('x')}</button>
   </div>`).join('');
 }
 function fitSheetTitle() {
@@ -790,8 +792,8 @@ function taskHTML(tk, dashTap) {
   const meta = [
     tk.pri === 'high' ? `<span class="badge high">${t('pri_high')}</span>` : tk.pri === 'low' ? `<span class="badge low">${t('pri_low')}</span>` : '',
     tk.tag ? `<span class="tag-chip">#${esc(tk.tag)}</span>` : '',
-    subs.length ? `<span class="tag-chip">☑ ${subs.filter(s => s.done).length}/${subs.length}</span>` : '',
-    tk.notify === false ? '<span class="mute-mark">🔕</span>' : (tk.notifyAt ? `<span class="mute-mark">🔔${tk.notifyAt}</span>` : '')
+    subs.length ? `<span class="tag-chip">${ic('list')}${subs.filter(s => s.done).length}/${subs.length}</span>` : '',
+    tk.notify === false ? `<span class="mute-mark">${ic('bell-off')}</span>` : (tk.notifyAt ? `<span class="mute-mark">${ic('bell')}${tk.notifyAt}</span>` : '')
   ].join('');
   return `<div class="task-item ${tk.done ? 'done' : ''}" onclick="taskRowTap(event,'${tk.id}')">
     <input type="checkbox" ${tk.done ? 'checked' : ''} onchange="toggleTask('${tk.id}')" aria-label="${esc(tk.title)}">
@@ -803,8 +805,8 @@ function taskHTML(tk, dashTap) {
       <span class="task-due">${dueTimeStr(tk)}</span>
       ${tk.due && !tk.done ? `<span class="task-rel">${t('rel')(n)}</span>` : ''}
     </div>` : ''}
-    ${!dashTap ? `<button class="small edit" aria-label="${t('sub_ph')}" onclick="showSubForm('${tk.id}')">＋</button>
-    <button class="small" aria-label="${t('del_label')}" onclick="delTask('${tk.id}')">✕</button>` : ''}
+    ${!dashTap ? `<button class="small edit" aria-label="${t('sub_ph')}" onclick="showSubForm('${tk.id}')">${ic('plus')}</button>
+    <button class="small" aria-label="${t('del_label')}" onclick="delTask('${tk.id}')">${ic('x')}</button>` : ''}
   </div>`;
 }
 function renderTagFilter() {
@@ -989,7 +991,8 @@ function renderSoundChips() {
 let themeMode = localStorage.getItem('planner_theme') || 'auto';
 const darkMq = window.matchMedia('(prefers-color-scheme: dark)');
 function applyTheme() {
-  const dark = themeMode === 'dark' || (themeMode === 'auto' && darkMq.matches);
+  const host = document.documentElement.getAttribute('data-theme'); // set by some embedding hosts
+  const dark = themeMode === 'dark' || (themeMode === 'auto' && (host ? host === 'dark' : darkMq.matches));
   document.documentElement.classList.toggle('dark', dark);
 }
 darkMq.addEventListener('change', () => { if (themeMode === 'auto') applyTheme(); });
@@ -1017,15 +1020,15 @@ function markModified() {
   scheduleSync();
 }
 function statusText() {
-  if (syncStatus === 'ok') return '☁ ' + t('sync_ok');
-  if (syncStatus === 'pending') return '☁ …';
-  if (syncStatus === 'error') return '⚠ ' + t('sync_err');
+  if (syncStatus === 'ok') return ic('cloud') + t('sync_ok');
+  if (syncStatus === 'pending') return ic('cloud') + '…';
+  if (syncStatus === 'error') return ic('alert') + t('sync_err');
   return '';
 }
 function setSyncStatus(s) {
   syncStatus = s;
   const el = document.getElementById('sync-status');
-  if (el) el.textContent = statusText();
+  if (el) el.innerHTML = statusText();
 }
 function renderSyncUI() {
   const el = document.getElementById('sync-area');
@@ -1036,11 +1039,11 @@ function renderSyncUI() {
   }
   let html = `<span class="settings-label">${t('sync_label')}</span>`;
   if (!fbConfig) {
-    html += `<button class="chip-btn ${syncSetupOpen ? 'on' : ''}" onclick="toggleSyncSetup()">${t('sync_setup')}</button>`;
+    html += `<button class="chip-btn ${syncSetupOpen ? 'on' : ''}" onclick="toggleSyncSetup()">${ic('cloud')}${t('sync_setup')}</button>`;
     if (syncSetupOpen) {
       html += `<div class="sync-panel">
         <textarea id="fb-config-input" rows="5" placeholder="${t('sync_ph')}"></textarea>
-        <div style="text-align:right; margin-top:6px;">
+        <div class="form-actions">
           <button class="primary" onclick="saveFbConfig()">${t('sync_save')}</button>
         </div>
       </div>`;
@@ -1304,7 +1307,7 @@ function renderCal() {
       <span class="daynum">${d.getDate()}</span>
       ${dayEvents.slice(0, maxEv).map(e => `<div class="ev-label${e.rec ? ' rec' : ''}" style="--ev:${e.color || EV_COLORS[0]}">${e.time ? `<span class="ev-time">${e.time}</span>` : ''}${esc(e.title)}</div>`).join('')}
       ${dayEvents.length > maxEv ? `<div class="ev-more">+${dayEvents.length - maxEv}</div>` : ''}
-      ${dayTasks.length ? `<div class="cal-task-dot">📌${dayTasks.length}</div>` : ''}
+      ${dayTasks.length ? `<div class="cal-task-dot">${ic('tasks')}${dayTasks.length}</div>` : ''}
     </div>`;
   });
 }
@@ -1320,15 +1323,15 @@ function renderModalEvents() {
   const dayTasks = tasks.filter(t => t.due === modalDate);
   let html = list.map(e => `<div class="modal-event-item" onclick="modalEvTap(event, '${e.id}', ${!!e.rec})">
       <span class="ev-dot inline" style="background:${e.color || EV_COLORS[0]}"></span>
-      <span style="flex:1">${e.rec ? '🔁 ' : ''}${timeStr(e) ? '🕐 ' + timeStr(e) + ' ' : ''}${esc(e.title)}${e.notify === false ? ' 🔕' : (e.notifyAt ? ' 🔔' + e.notifyAt : '')}</span>
+      <span class="mei-main">${timeStr(e) ? `<span class="mei-time">${timeStr(e)}</span>` : ''}<span class="mei-title">${esc(e.title)}</span>${e.rec ? ic('repeat', 'faint') : ''}${e.notify === false ? ic('bell-off', 'faint') : (e.notifyAt ? ic('bell', 'faint') + `<span class="faint">${e.notifyAt}</span>` : '')}</span>
       ${e.rec
         ? `<span class="rec-del">
-             <button class="small" onclick="delRecurringOne('${e.id}','${modalDate}')">✕ ${t('del_one')}</button>
-             <button class="small" onclick="delRecurringAfter('${e.id}','${modalDate}')">✕ ${t('del_after')}</button>
+             <button class="small" onclick="delRecurringOne('${e.id}','${modalDate}')">${t('del_one')}</button>
+             <button class="small" onclick="delRecurringAfter('${e.id}','${modalDate}')">${t('del_after')}</button>
            </span>`
-        : `<button class="small" aria-label="${t('del_label')}" onclick="delEvent('${e.id}')">✕</button>`}
+        : `<button class="small" aria-label="${t('del_label')}" onclick="delEvent('${e.id}')">${ic('x')}</button>`}
     </div>`).join('');
-  html += dayTasks.map(tk => `<div class="modal-event-item" onclick="modalTaskTap(event, '${tk.id}')"><span style="flex:1">📌 ${timeStr(tk) ? timeStr(tk) + ' ' : ''}${esc(tk.title)}${tk.done ? ' ' + t('done_suffix') : ''}</span></div>`).join('');
+  html += dayTasks.map(tk => `<div class="modal-event-item" onclick="modalTaskTap(event, '${tk.id}')"><span class="mei-main">${ic('tasks', 'faint')}${timeStr(tk) ? `<span class="mei-time">${timeStr(tk)}</span>` : ''}<span class="mei-title">${esc(tk.title)}</span>${tk.done ? `<span class="faint">${t('done_suffix')}</span>` : ''}</span></div>`).join('');
   document.getElementById('modal-events').innerHTML = html || `<div class="empty">${t('no_events_day')}</div>`;
 }
 function addEvent() {
@@ -1544,10 +1547,10 @@ function projHTML(p, level) {
   let html = `<div class="proj-item lv${level}">
     <div class="proj-top">
       <span class="lv-tag">${t('lv')[level]}</span>
-      <span class="proj-name">${p.pct >= 100 ? '✅ ' : ''}${esc(p.name)}</span>
+      <span class="proj-name">${p.pct >= 100 ? ic('check') : ''}${esc(p.name)}</span>
       <span class="proj-pct">${p.pct}%</span>
       ${level < 2 ? `<button class="add-goal-btn" onclick="showChildForm('${p.id}')">${t('add_lv')[level]}</button>` : ''}
-      <button class="small" aria-label="${t('del_label')}" onclick="delProj('${p.id}')">✕</button>
+      <button class="small" aria-label="${t('del_label')}" onclick="delProj('${p.id}')">${ic('x')}</button>
     </div>
     <div class="bar-bg"><div class="bar-fill" style="width:${p.pct}%"></div></div>
     <div class="proj-controls"><input type="range" min="0" max="100" step="5" value="${p.pct}" oninput="setPct('${p.id}', this.value)"></div>
@@ -1639,16 +1642,16 @@ function renderHabits() {
   document.getElementById('habit-list').innerHTML = habits.length ? habits.map(h => {
     const streak = habitStreak(h);
     return `<div class="habit-item" onclick="habitRowTap(event, '${h.id}')">
-      <span class="habit-name">${h.dates.includes(today) ? '✅ ' : ''}${esc(h.name)}</span>
+      <span class="habit-name">${h.dates.includes(today) ? ic('check') : ''}${esc(h.name)}</span>
       <span class="habit-days">${days.map(ds => {
         const dt = strToDate(ds);
         return `<button class="habit-day ${h.dates.includes(ds) ? 'on' : ''} ${ds === today ? 'today-ring' : ''}" onclick="toggleHabitDay('${h.id}','${ds}')" title="${ds}">
           <span>${dt.getDate()}</span>
         </button>`;
       }).join('')}</span>
-      <span class="streak">🔥 ${streak}${lang === 'ja' ? t('streak') : ' ' + (streak === 1 ? 'day' : 'days')}</span>
-      <span class="time-range" title="${t('remind_title')}"><span>⏰</span><input type="time" value="${h.remind || ''}" onchange="setHabitRemind('${h.id}', this.value)" style="font-size:12px; padding:4px 6px;"></span>
-      <button class="small" aria-label="${t('del_label')}" onclick="delHabit('${h.id}')">✕</button>
+      <span class="streak">${ic('flame')}${streak}${lang === 'ja' ? t('streak') : ' ' + (streak === 1 ? 'day' : 'days')}</span>
+      <span class="time-range" title="${t('remind_title')}">${ic('bell', 'faint')}<input type="time" class="input-sm" value="${h.remind || ''}" onchange="setHabitRemind('${h.id}', this.value)" aria-label="${t('remind_title')}"></span>
+      <button class="small" aria-label="${t('del_label')}" onclick="delHabit('${h.id}')">${ic('x')}</button>
     </div>`;
   }).join('') : `<div class="empty">${t('empty_habits')}</div>`;
 }
@@ -1787,8 +1790,8 @@ function renderStats() {
   document.getElementById('st-pri').innerHTML = ['high','mid','low'].map(p => {
     const n = open.filter(tk => tk.pri === p).length;
     return `<div class="stat-row">
-      <span class="badge ${p}" style="flex:0 0 52px; text-align:center;">${t('pri_' + p)}</span>
-      <div class="bar-bg" style="flex:1; height:10px;"><div class="bar-fill" style="width:${(n / total) * 100}%"></div></div>
+      <span class="stat-row-label">${t('pri_' + p)}</span>
+      <div class="bar-bg"><div class="bar-fill" style="width:${(n / total) * 100}%"></div></div>
       <span class="stat-row-num">${n}</span>
     </div>`;
   }).join('');
@@ -1800,8 +1803,8 @@ function renderStats() {
   }).join('');
 
   document.getElementById('st-habit-range').innerHTML =
-    `<button class="chip-btn" onclick="stHabitMove(1)">←</button>
-     <button class="chip-btn" onclick="stHabitMove(-1)">→</button>` +
+    `<button class="icon-btn" onclick="stHabitMove(1)" aria-label="Previous">${ic('arrow-left')}</button>
+     <button class="icon-btn" onclick="stHabitMove(-1)" aria-label="Next">${ic('arrow-right')}</button>` +
     [7, 30].map(n =>
       `<button class="chip-btn ${statsHabitRange === n ? 'on' : ''}" onclick="setStatsHabitRange(${n})">${t(n === 7 ? 'range_week' : 'range_month')}</button>`).join('');
   const hdays = lastNDaysFrom(statsHabitRange, statsHabitOffset * statsHabitRange);
@@ -1810,8 +1813,8 @@ function renderStats() {
   document.getElementById('st-habits').innerHTML = habits.length ? habits.map(h => {
     const n = hdays.filter(ds => h.dates.includes(ds)).length;
     return `<div class="stat-row">
-      <span style="flex:1; font-size:13px; font-weight:600;">${esc(h.name)}</span>
-      <div class="bar-bg" style="flex:2; height:9px;"><div class="bar-fill" style="width:${(n / statsHabitRange) * 100}%"></div></div>
+      <span class="stat-row-label">${esc(h.name)}</span>
+      <div class="bar-bg"><div class="bar-fill" style="width:${(n / statsHabitRange) * 100}%"></div></div>
       <span class="stat-row-num">${n}/${statsHabitRange}</span>
     </div>`;
   }).join('') : `<div class="empty">${t('empty_habits')}</div>`;
@@ -1825,7 +1828,7 @@ function toggleLater() {
   document.getElementById('btn-later').textContent = showLater ? t('hide_later') : t('show_later');
 }
 function eventItemHTML(e) {
-  return `<div class="task-item" onclick="goEvent('${e.date}')"><span class="ev-dot inline" style="background:${e.color || EV_COLORS[0]}"></span><span class="task-title">${e.rec ? '🔁 ' : ''}${timeStr(e) ? '🕐 ' + timeStr(e) + ' ' : ''}${esc(e.title)}</span></div>`;
+  return `<div class="task-item" onclick="goEvent('${e.date}')"><span class="ev-dot inline" style="background:${e.color || EV_COLORS[0]}"></span><span class="mei-main">${timeStr(e) ? `<span class="mei-time">${timeStr(e)}</span>` : ''}<span class="mei-title">${esc(e.title)}</span>${e.rec ? ic('repeat', 'faint') : ''}</span></div>`;
 }
 const nowHM = () => { const n = new Date(); return String(n.getHours()).padStart(2, '0') + ':' + String(n.getMinutes()).padStart(2, '0'); };
 // "What to do next": past-due task, an event starting within the hour, today's task,
@@ -1861,7 +1864,7 @@ function renderHero() {
       <div class="hero-title">${esc(tk.title)}</div>
       <div class="hero-meta">${meta}</div>
       <div class="hero-actions">
-        <button class="hero-btn" onclick="toggleTask('${tk.id}')">✓ ${t('hero_done')}</button>
+        <button class="hero-btn" onclick="toggleTask('${tk.id}')">${ic('check')}${t('hero_done')}</button>
         <button class="hero-link" onclick="openTaskSheet('${tk.id}')">${t('edit')}</button>
       </div>
       ${h.more ? `<div class="hero-more">${t('hero_more')(h.more)}</div>` : ''}`;
@@ -1874,14 +1877,14 @@ function renderHero() {
     const tk = h.then;
     el.className = 'hero event';
     el.innerHTML = `<div class="hero-label">${t('hero_event')} · ${when}</div>
-      <div class="hero-title">${e.rec ? '🔁 ' : ''}${esc(e.title)}</div>
-      <div class="hero-meta">🕐 ${timeStr(e)}${e.notify === false ? ' · 🔕' : ''}</div>
+      <div class="hero-title">${esc(e.title)}</div>
+      <div class="hero-meta">${ic('clock')}${timeStr(e)}${e.rec ? ic('repeat') : ''}${e.notify === false ? ic('bell-off') : ''}</div>
       <div class="hero-actions"><button class="hero-btn" onclick="goEditEvent('${e.date}','${e.id}',${!!e.rec})">${t('hero_edit')}</button></div>
       ${tk ? `<div class="hero-then">
         <span class="hero-then-label">${t('hero_then')}</span>
         <span class="hero-then-title">${esc(tk.title)}</span>
         <span class="hero-then-due">${t('rel')(daysUntil(tk.due))}</span>
-        <button class="hero-then-btn" onclick="toggleTask('${tk.id}')" aria-label="${t('hero_done')}">✓</button>
+        <button class="hero-then-btn" onclick="toggleTask('${tk.id}')" aria-label="${t('hero_done')}">${ic('check')}</button>
       </div>` : ''}`;
   } else {
     el.className = 'hero calm';
@@ -1896,7 +1899,7 @@ function renderDashHabits() {
     const on = h.dates.includes(today);
     const st = habitStreak(h);
     return `<button class="habit-chip ${on ? 'on' : ''}" aria-pressed="${on}" onclick="toggleHabitDay('${h.id}','${today}')">
-      <span class="hc-check">${on ? '✓' : ''}</span><span class="hc-name">${esc(h.name)}</span>${st ? `<span class="hc-streak">🔥${st}</span>` : ''}
+      <span class="hc-check">${on ? ic('check') : ''}</span><span class="hc-name">${esc(h.name)}</span>${st ? `<span class="hc-streak">${ic('flame')}${st}</span>` : ''}
     </button>`;
   }).join('');
 }
@@ -1921,7 +1924,7 @@ function renderDash() {
   const nNone = Math.max(0, undated.length - 3);
   document.getElementById('dash-buckets').innerHTML =
     ((nearHTML + undatedHTML) || `<div class="empty">${t('empty_open')}</div>`) +
-    `<div class="more-link"><button class="ghost" onclick="showView('tasks')">${(nLater || nNone) ? t('more_tasks')(nLater, nNone) : t('all_tasks')}</button></div>`;
+    `<div class="more-link"><button class="ghost" onclick="showView('tasks')">${(nLater || nNone) ? t('more_tasks')(nLater, nNone) : t('all_tasks')}${ic('chevron-right')}</button></div>`;
 
   let weekHTML = '';
   const d = new Date();
@@ -1957,8 +1960,9 @@ let notifEnabled = localStorage.getItem('planner_notif') === '1';
 function updateNotifBtn() {
   const btn = document.getElementById('btn-notif');
   if (!('Notification' in window)) { btn.style.display = 'none'; return; }
-  if (Notification.permission === 'denied') { btn.textContent = t('notif_blocked'); btn.classList.remove('on'); return; }
-  btn.textContent = notifEnabled && Notification.permission === 'granted' ? t('notif_on') : t('notif_off');
+  if (Notification.permission === 'denied') { btn.innerHTML = ic('bell-off') + t('notif_blocked'); btn.classList.remove('on'); return; }
+  const on = notifEnabled && Notification.permission === 'granted';
+  btn.innerHTML = ic(on ? 'bell' : 'bell-off') + (on ? t('notif_on') : t('notif_off'));
   btn.classList.toggle('on', notifEnabled && Notification.permission === 'granted');
 }
 function toggleNotif() {
