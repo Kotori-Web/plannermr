@@ -43,7 +43,7 @@ const I18N = {
     sound_label: 'Sound:', snd_beep: 'Beep', snd_chime: 'Chime', snd_bell: 'Bell', snd_none: 'None',
     theme_label: 'Theme:', th_auto: 'Auto', th_light: 'Light', th_dark: 'Dark',
     sync_label: 'Sync:', sync_setup: 'Set up sync', sync_login: 'Sign in with Google', sync_logout: 'Sign out',
-    sync_remove: 'Remove config', sync_save: 'Save & reload', sync_ok: 'Synced', sync_err: 'Sync error',
+    sync_remove: 'Use built-in config', sync_save: 'Save & reload', sync_ok: 'Synced', sync_err: 'Sync error',
     sync_bad: 'Could not read the config',
     sync_noload: 'Could not load Firebase (check your connection, then reload).', sync_logging: 'Signing in…',
     auth_err: {
@@ -51,8 +51,8 @@ const I18N = {
       'auth/operation-not-allowed': () => 'Google sign-in is turned off. Firebase console → Authentication → Sign-in method → enable Google.',
       'auth/popup-closed-by-user': () => 'The sign-in window was closed before finishing.',
       'auth/network-request-failed': () => 'Network error. Check your connection and try again.',
-      'auth/invalid-api-key': () => 'The apiKey in the config is wrong. Remove the config and paste it again.',
-      'auth/api-key-not-valid': () => 'The apiKey in the config is wrong. Remove the config and paste it again.',
+      'auth/invalid-api-key': () => 'The apiKey in the config is wrong. Check the Firebase project settings.',
+      'auth/api-key-not-valid': () => 'The apiKey in the config is wrong. Check the Firebase project settings.',
       'auth/internal-error': () => 'Firebase returned an internal error. Check that the config matches your project.',
       redirect: () => 'The browser blocked the sign-in result. Try again in Chrome or Safari directly (not the home-screen app), or turn off "Prevent cross-site tracking" in Safari.',
       other: c => `Sign-in failed (${c}).`
@@ -129,7 +129,7 @@ const I18N = {
     sound_label: '通知音:', snd_beep: 'ビープ', snd_chime: 'チャイム', snd_bell: 'ベル', snd_none: 'なし',
     theme_label: 'テーマ:', th_auto: '自動', th_light: 'ライト', th_dark: 'ダーク',
     sync_label: '同期:', sync_setup: '同期を設定', sync_login: 'Googleでログイン', sync_logout: 'ログアウト',
-    sync_remove: '設定を削除', sync_save: '保存して再読み込み', sync_ok: '同期済み', sync_err: '同期エラー',
+    sync_remove: '組み込みの設定に戻す', sync_save: '保存して再読み込み', sync_ok: '同期済み', sync_err: '同期エラー',
     sync_bad: '設定を読み取れませんでした',
     sync_noload: 'Firebase を読み込めませんでした(通信を確認して再読み込みしてください)', sync_logging: 'ログイン中…',
     auth_err: {
@@ -137,8 +137,8 @@ const I18N = {
       'auth/operation-not-allowed': () => 'Google ログインがオフになっています。Firebase コンソール →「Authentication」→「Sign-in method」で Google を有効にしてください。',
       'auth/popup-closed-by-user': () => 'ログイン画面が途中で閉じられました。',
       'auth/network-request-failed': () => '通信エラーです。電波を確認してもう一度試してください。',
-      'auth/invalid-api-key': () => '設定の apiKey が正しくありません。「設定を削除」してから貼り直してください。',
-      'auth/api-key-not-valid': () => '設定の apiKey が正しくありません。「設定を削除」してから貼り直してください。',
+      'auth/invalid-api-key': () => '設定の apiKey が正しくありません。Firebase のプロジェクト設定を確認してください。',
+      'auth/api-key-not-valid': () => '設定の apiKey が正しくありません。Firebase のプロジェクト設定を確認してください。',
       'auth/internal-error': () => 'Firebase 側でエラーが起きました。貼った設定がプロジェクトのものと合っているか確認してください。',
       redirect: () => 'ブラウザがログイン結果を受け取れませんでした。ホーム画面のアプリではなく Safari / Chrome で直接開いて試すか、Safari の「サイト越えトラッキングを防ぐ」をオフにして試してください。',
       other: c => `ログインできませんでした(${c})`
@@ -1010,7 +1010,19 @@ function renderThemeChips() {
 }
 
 // ---------- Cloud Sync (Firebase) ----------
-let fbConfig = store.load('fbconfig', null);
+// Built-in Firebase project, so sign-in works on any device without pasting the config.
+// (A Firebase web config is not a secret: it is meant to be shipped in the page; data is protected by Firestore rules.)
+const DEFAULT_FB_CONFIG = {
+  apiKey: 'AIzaSyDUI-U-Yjq7tQqYBqL_Ha0Kn8ic2CGxLiU',
+  authDomain: 'planner-b9825.firebaseapp.com',
+  projectId: 'planner-b9825',
+  storageBucket: 'planner-b9825.firebasestorage.app',
+  messagingSenderId: '623356528292',
+  appId: '1:623356528292:web:0e4b5c104c9ec243284831'
+};
+// A config pasted earlier (another project) still wins; otherwise use the built-in one.
+const customFbConfig = store.load('fbconfig', null);
+let fbConfig = customFbConfig || DEFAULT_FB_CONFIG;
 let fbUser = null, syncTimer = null, fbUnsub = null, syncSetupOpen = false, syncStatus = '';
 let lastLocalMod = +localStorage.getItem('planner_lastmod') || 0;
 
@@ -1050,7 +1062,7 @@ function renderSyncUI() {
     }
   } else if (!fbUser) {
     html += `<button class="chip-btn on" onclick="fbLogin()" ${authBusy ? 'disabled' : ''}>${authBusy ? t('sync_logging') : t('sync_login')}</button>
-      <button class="chip-btn" onclick="removeFbConfig()">${t('sync_remove')}</button>`;
+      ${customFbConfig ? `<button class="chip-btn" onclick="removeFbConfig()">${t('sync_remove')}</button>` : ''}`;
     if (authError) html += `<div class="sync-err">${esc(authError)}</div>`;
   } else {
     html += `<span class="sync-mail">${esc(fbUser.email || '')}</span>
